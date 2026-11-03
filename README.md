@@ -1,12 +1,18 @@
-# Kubernetes Ingress Practical
+# 🚀 Kubernetes Ingress Practical
 
-## Project Overview
-This project demonstrates how to deploy two applications on a Kubernetes cluster using Nginx Ingress Controller.
+A simple Kubernetes project demonstrating **path-based routing using Nginx Ingress Controller**.
 
-- `/nginx` – Opens the default Nginx welcome page.
-- `/myapp` – Opens my personal website built using Python Flask.
+## 📌 About the Project
 
-## Technologies Used
+In this project, we deploy two different applications on a Kubernetes cluster and access them using a single entry point.
+
+- 🌐 `/nginx` – Displays the default Nginx welcome page.
+- 💻 `/myapp` – Displays my personal website built using Python Flask.
+
+The main goal is to understand Kubernetes Deployments, Services, Ingress, and how traffic is routed to different applications.
+
+## 🛠️ Technologies Used
+
 - AWS EC2
 - Docker
 - Kubernetes (Kind)
@@ -14,42 +20,90 @@ This project demonstrates how to deploy two applications on a Kubernetes cluster
 - Python Flask
 - Git & GitHub
 
-## How to Run
+## 📂 Project Structure
 
-1. Clone the repository:
-   ```bash
-   git clone YOUR_GITHUB_REPOSITORY_URL
-   cd kubernetes-ingress-practical
-   ```
+```text
+kubernetes-ingress-practical/
+│
+├── app/
+│   ├── app.py
+│   ├── requirements.txt
+│   ├── Dockerfile
+│   └── templates/
+│       └── index.html
+│
+├── kubernetes/
+│   ├── kind-config.yaml
+│   ├── nginx-deployment.yaml
+│   ├── nginx-service.yaml
+│   ├── myapp-deployment.yaml
+│   ├── myapp-service.yaml
+│   └── ingress.yaml
+│
+└── README.md
+```
 
-2. Install Docker, kubectl, and Kind.
+## ⚙️ How to Run
 
-3. Create the Kubernetes cluster:
-   ```bash
-   kind create cluster --config kubernetes/kind-config.yaml
-   ```
+**1. Clone the repository**
 
-4. Build the Flask Docker image and load it into Kind:
-   ```bash
-   docker build -t my-personal-website:v1 ./app
-   kind load docker-image my-personal-website:v1
-   ```
+```bash
+git clone YOUR_GITHUB_REPOSITORY_URL
+cd kubernetes-ingress-practical
+```
 
-5. Deploy the applications and services:
-   ```bash
-   kubectl apply -f kubernetes/
-   ```
+**2. Create the Kind cluster**
 
-6. Install Nginx Ingress Controller and apply the Ingress configuration.
+```bash
+kind create cluster --config kubernetes/kind-config.yaml
+```
 
-## Expected Result
-- `http://EC2-PUBLIC-IP/nginx` – Nginx Welcome Page
-- `http://EC2-PUBLIC-IP/myapp` – Personal Website
+**3. Build the Flask Docker image**
 
-**Purpose:** Understanding Kubernetes Deployments, Services, Ingress Controller, and path-based routing.
+```bash
+docker build -t my-personal-website:v1 ./app
+```
 
-## More Details
+**4. Load the image into Kind**
 
-For detailed project explanation, implementation steps, and configurations, visit my Hashnode blog:
+```bash
+kind load docker-image my-personal-website:v1
+```
 
-[Read the complete project on Hashnode](YOUR_HASHNODE_BLOG_LINK)
+**5. Install Nginx Ingress Controller**
+
+Install the Nginx Ingress Controller using the official Kind installation instructions.
+
+**6. Deploy applications and services**
+
+```bash
+kubectl apply -f kubernetes/
+```
+
+## 🌍 Expected Output
+
+| URL | Application |
+|---|---|
+| `/nginx` | Nginx Welcome Page |
+| `/myapp` | Personal Website |
+
+## 📚 What I Learned
+
+- Creating and managing Kubernetes clusters using Kind.
+- Deploying applications using Kubernetes Deployments.
+- Exposing applications using ClusterIP Services.
+- Configuring Nginx Ingress Controller.
+- Implementing path-based routing.
+- Building and deploying Docker images.
+
+## 📝 Detailed Documentation
+
+Want to understand the complete implementation?
+
+I've shared the detailed explanation, configurations, and step-by-step practical guide on my Hashnode blog.
+
+👉 **[Read the Complete Project on Hashnode](YOUR_HASHNODE_BLOG_LINK)**
+
+---
+
+⭐ If you find this project useful, feel free to explore and share your feedback!
