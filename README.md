@@ -19,6 +19,7 @@ The main goal is to understand Kubernetes Deployments, Services, Ingress, and ho
 - Nginx Ingress Controller
 - Python Flask
 - Git & GitHub
+- Shell Scripting
 
 ## 📂 Project Structure
 
@@ -40,44 +41,80 @@ kubernetes-ingress-practical/
 │   ├── myapp-service.yaml
 │   └── ingress.yaml
 │
+├── install.sh
 └── README.md
 ```
 
 ## ⚙️ How to Run
 
-**1. Clone the repository**
+### Step 1: Create an AWS EC2 Instance
 
-```bash
+- Launch an Ubuntu EC2 instance.
+- Configure the Security Group to allow SSH (22) and HTTP (80).
+- Connect to the EC2 instance using SSH.
+
+### Step 2: Clone the GitHub Repository
+
+```text
 git clone YOUR_GITHUB_REPOSITORY_URL
+
 cd kubernetes-ingress-practical
 ```
 
-**2. Create the Kind cluster**
+### Step 3: Install Required Tools
 
-```bash
+Run the installation script to install Docker, kubectl, and Kind.
+
+```text
+chmod +x install.sh
+
+./install.sh
+```
+
+### Step 4: Create the Kubernetes Cluster
+
+```text
 kind create cluster --config kubernetes/kind-config.yaml
 ```
 
-**3. Build the Flask Docker image**
+The cluster contains:
+- 1 Control Plane Node
+- 2 Worker Nodes
 
-```bash
+### Step 5: Build the Flask Docker Image
+
+```text
 docker build -t my-personal-website:v1 ./app
 ```
 
-**4. Load the image into Kind**
+### Step 6: Load the Image into Kind
 
-```bash
+```text
 kind load docker-image my-personal-website:v1
 ```
 
-**5. Install Nginx Ingress Controller**
+### Step 7: Install Nginx Ingress Controller
 
 Install the Nginx Ingress Controller using the official Kind installation instructions.
 
-**6. Deploy applications and services**
+### Step 8: Deploy Applications and Services
 
-```bash
+```text
 kubectl apply -f kubernetes/
+```
+
+### Step 9: Verify Deployments and Pods
+
+```text
+kubectl get nodes
+
+kubectl get deployments
+
+kubectl get pods
+
+kubectl get services
+
+kubectl get ingress
 ```
 
 ## 🌍 Expected Output
@@ -87,6 +124,8 @@ kubectl apply -f kubernetes/
 | `/nginx` | Nginx Welcome Page |
 | `/myapp` | Personal Website |
 
+Access both applications using your EC2 Public IP.
+
 ## 📚 What I Learned
 
 - Creating and managing Kubernetes clusters using Kind.
@@ -95,6 +134,8 @@ kubectl apply -f kubernetes/
 - Configuring Nginx Ingress Controller.
 - Implementing path-based routing.
 - Building and deploying Docker images.
+- Automating tool installation using Shell Scripting.
+- Deploying applications on AWS EC2.
 
 ## 📝 Detailed Documentation
 
