@@ -117,6 +117,35 @@ kubectl get services
 kubectl get ingress
 ```
 
+## 🌍 Accessing the Applications
+
+Once the Kubernetes deployments and Ingress configuration are successfully applied, access the applications using your EC2 Public IP.
+
+**1. Nginx Application**
+
+```text
+http://<EC2-PUBLIC-IP>/nginx
+```
+
+Displays the default Nginx welcome page.
+
+**2. My Personal Website**
+
+```text
+http://<EC2-PUBLIC-IP>/myapp
+```
+
+Displays my personal website built using Python Flask.
+
+**Example:**
+
+```text
+http://13.200.xx.xx/nginx
+http://13.200.xx.xx/myapp
+```
+
+Make sure port 80 is allowed in the EC2 Security Group and the Nginx Ingress Controller is running.
+
 ## 🌍 Expected Output
 
 | URL | Application |
