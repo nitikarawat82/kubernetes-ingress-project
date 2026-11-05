@@ -56,7 +56,7 @@ kubernetes-ingress-practical/
 ### Step 2: Clone the GitHub Repository
 
 ```text
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone https://github.com/nitikarawat82/kubernetes-ingress-project
 
 cd kubernetes-ingress-practical
 ```
