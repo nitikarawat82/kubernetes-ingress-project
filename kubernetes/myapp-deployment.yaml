@@ -1,3 +1,4 @@
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,8 +16,8 @@ spec:
         app: myapp
     spec:
       containers:
-      - name: myapp
-        image: my-personal-website:v1
-        imagePullPolicy: Never
-        ports:
-        - containerPort: 5000
+        - name: myapp
+          image: nitikadevop/python-sample-app:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
