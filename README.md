@@ -92,7 +92,7 @@ The Kind configuration also maps host port 80 to port 80 on the control-plane no
 Build the Docker image from the application directory.
 
 ```bash
-docker build -t my-personal-website:v1 ./app
+docker build -t ingress-practical .
 ```
 
 ### Step 6: Push the Docker Image to Docker Hub
@@ -106,7 +106,7 @@ docker login
 Tag the image with your Docker Hub username:
 
 ```bash
-docker tag my-personal-website:v1 YOUR-DOCKERHUB-USERNAME/my-personal-website:v1
+docker tag ingress-practical YOUR-DOCKERHUB-USERNAME/ingress-practical:v1
 ```
 
 Push the image:
